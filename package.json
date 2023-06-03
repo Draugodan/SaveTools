@@ -1,0 +1,11 @@
+{
+  "name": "com.draugodan.savetools",
+  "version": "1.0.0",
+  "displayName": "Save Tools",
+  "author": {
+    "name": "Draugodan"
+  },
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  }
+}
