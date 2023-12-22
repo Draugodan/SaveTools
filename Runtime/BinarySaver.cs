@@ -71,6 +71,11 @@ namespace SaveTools
             writer.Write(dat);
         }
 
+        public void Write(uint dat)
+        {
+            writer.Write(dat);
+        }
+
         public void Write(long dat)
         {
             writer.Write(dat);
@@ -158,6 +163,11 @@ namespace SaveTools
         public int ReadInt()
         {
             return reader.ReadInt32();
+        }
+
+        public uint ReadUInt()
+        {
+            return reader.ReadUInt32();
         }
 
         public long ReadLong()

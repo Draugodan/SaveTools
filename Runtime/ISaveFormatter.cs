@@ -15,6 +15,7 @@ namespace SaveTools
         #region IO Operations
         #region Writing
         void Write(int dat);
+        void Write(uint dat);
         void Write(long dat);
         void Write(byte dat);
         void Write(bool dat);
@@ -36,6 +37,7 @@ namespace SaveTools
 
         #region Reading to return
         int ReadInt();
+        uint ReadUInt();
         long ReadLong();
         float ReadSingle();
         bool ReadBoolean();

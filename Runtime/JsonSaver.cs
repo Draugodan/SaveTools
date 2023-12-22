@@ -129,6 +129,11 @@ namespace SaveTools
             ((IDictionary<string, object>)contents)[VarName(variableCounter++)] = dat;
         }
 
+        public void Write(uint dat)
+        {
+            ((IDictionary<string, object>)contents)[VarName(variableCounter++)] = dat;
+        }
+
         public void Write(long dat)
         {
             ((IDictionary<string, object>)contents)[VarName(variableCounter++)] = dat;
@@ -211,6 +216,11 @@ namespace SaveTools
         public int ReadInt()
         {
             return Convert.ToInt32(ReadNext());
+        }
+
+        public uint ReadUInt()
+        {
+            return Convert.ToUInt32(ReadNext());
         }
 
         public long ReadLong()

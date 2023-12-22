@@ -81,6 +81,12 @@ namespace SaveTools
             linecount++;
         }
 
+        public void Write(uint dat)
+        {
+            writer.WriteLine(dat.ToString());
+            linecount++;
+        }
+
         public void Write(long dat)
         {
             writer.WriteLine(dat.ToString());
@@ -184,6 +190,12 @@ namespace SaveTools
         {
             linecount++;
             return int.Parse(reader.ReadLine());
+        }
+
+        public uint ReadUInt()
+        {
+            linecount++;
+            return uint.Parse(reader.ReadLine());
         }
 
         public long ReadLong()
