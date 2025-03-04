@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace SaveTools
 {
@@ -62,6 +63,56 @@ namespace SaveTools
         public void Load(ISaver saver)
         {
             saver.Load(this);
+        }
+
+        public void Save<T>(List<T> savers) where T : ISaver, new()
+        {
+            Write(savers.Count);
+            for (int i = 0; i < savers.Count; i++)
+                Save(savers[i]);
+        }
+
+        public void Load<T>(List<T> savers) where T : ISaver, new()
+        {
+            int count = ReadInt();
+            for (int i = 0; i < count; i++)
+            {
+                T result = new();
+                Load(result);
+                savers.Add(result);
+            }
+        }
+
+        public List<T> LoadList<T>() where T : ISaver, new()
+        {
+            List<T> result = new();
+            int count = ReadInt();
+            for (int i = 0; i < count; i++)
+            {
+                T saver = new();
+                Load(result);
+                result.Add(saver);
+            }
+            return result;
+        }
+
+        public void Save<T>(T[] savers) where T : ISaver, new()
+        {
+            Write(savers.Length);
+            for (int i = 0; i < savers.Length; i++)
+                Save(savers[i]);
+        }
+
+        public T[] LoadArray<T>() where T : ISaver, new()
+        {
+            T[] result = new T[ReadInt()];
+            for (int i = 0; i < result.Length; i++)
+            {
+                T saver = new();
+                Load(saver);
+                result[i] = saver;
+            }
+            return result;
         }
 
         #region IO operations

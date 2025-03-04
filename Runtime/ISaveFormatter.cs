@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace SaveTools
 {
     public interface ISaveFormatter
     {
         void Save(string path);
-
         bool Load(string path);
 
         void Save(ISaver saver);
-
         void Load(ISaver saver);
+
+        void Save<T>(List<T> dat) where T : ISaver, new();
+        void Load<T>(List<T> dat) where T : ISaver, new();
+        List<T> LoadList<T>() where T : ISaver, new();
+
+        void Save<T>(T[] dat) where T : ISaver, new();
+        T[] LoadArray<T>() where T : ISaver, new ();
 
         #region IO Operations
         #region Writing
